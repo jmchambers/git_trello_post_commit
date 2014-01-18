@@ -42,7 +42,7 @@ Get your developer key from: https://trello.com/1/appKey/generate
 
 ### oauth_token
 
-You need to authorize the app with `API_KEY` to access each board separatelly. To do that:
+You need to authorize the app with `API_KEY` to access each board separately. To do that:
 
 https://trello.com/1/authorize?response_type=token&name=`BOARD_NAME_AS_SHOWN_IN_URL`&scope=read,write&expiration=never&key=`API_KEY`
 
@@ -56,9 +56,9 @@ While examining the JSON from the previous step, you can also grab the value of 
 
 ### commit_url_prefix
 
-If you have a web view of your Git repo (such as Github), you can enter the URL which, when sufixed with the commit SHA will show the commit in question. The hook will add a link to the commit in the comment it adds to the card.
+If you have a web view of your Git repo (such as Github), you can enter the URL which, when suffixed with the commit SHA will show the commit in question. The hook will add a link to the commit in the comment it adds to the card.
 
-If you ommit the parameter, a link won't be added.
+If you omit the parameter, a link won't be added.
 
 ## Usage
 
@@ -70,7 +70,7 @@ So an example commit message might be:
 
     Added that awesome feature closes #42
 
-For the 'case' and 'card' keywords, the card is moved to the list with id `LIST_ID_IN_PROGRESS`, while for keywords 'close' and 'fix', the card is moved to the list with id `LIST_ID_IN_DONE` .
+For the 'case' and 'card' keywords, the card is moved to the list with id `LIST_ID_IN_PROGRESS`, while for keywords 'close' and 'fix', the card is moved to the list with id `LIST_ID_DONE` .
 
 ## Contributing
 
