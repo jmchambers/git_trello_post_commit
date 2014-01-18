@@ -1,5 +1,7 @@
 require "git_trello_post_commit/version"
 require "git_trello_post_commit/trello-http"
+require "json"
+require "git"
 
 module GitTrelloPostCommit
 
@@ -8,7 +10,7 @@ module GitTrelloPostCommit
     def initialize(config)
       @api_key = config[:api_key]
       @oauth_token = config[:oauth_token]
-      @repodir = Dir.pwd
+      @repodir = config[:repodir] || Dir.pwd
       @board_id = config[:board_id]
       @list_id_in_progress = config[:list_id_in_progress]
       @list_id_done = config[:list_id_done]
