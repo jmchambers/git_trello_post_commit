@@ -1,4 +1,5 @@
 require "git_trello_post_commit/version"
+require "git_trello_post_commit/trello-http"
 
 module GitTrelloPostCommit
 
