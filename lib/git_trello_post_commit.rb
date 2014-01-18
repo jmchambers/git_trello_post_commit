@@ -13,7 +13,7 @@ module GitTrelloPostCommit
       @list_id_done = config[:list_id_done]
       @commit_url_prefix = config[:commit_url_prefix]
 
-      @http = Trello::HTTP.new(@oauth_token, @api_key)
+      @http = GitTrelloPostCommit::Trello::HTTP.new(@oauth_token, @api_key)
       @repo = Git.open(@repodir)
     end
 
