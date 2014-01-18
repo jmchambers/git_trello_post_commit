@@ -20,10 +20,6 @@ module GitTrelloPostCommit
       @repo = Git.open(@repodir)
     end
 
-    def test
-      puts 'git-trello post-commit hook trigered just fine' 
-    end
-
     def run
 
       #get the commit and it's sha from HEAD
@@ -34,7 +30,7 @@ module GitTrelloPostCommit
       match = commit.message.match(/((case|card|close|fix)e?s? \D?([0-9]+))/i)
       return unless match and match[3].to_i > 0
 
-      puts "Trello: Commenting on the card ##{match[3].to_i}"
+      puts "Trello: Commenting on card ##{match[3].to_i}"
 
       results = @http.get_card(@board_id, match[3].to_i)
       unless results
