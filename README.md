@@ -62,15 +62,34 @@ If you omit the parameter, a link won't be added.
 
 ## Usage
 
-The gem uses the following regex to detect a reference to a card:
+The commit-message parser looks for the following keywords:
 
-    /((case|card|close|fix)e?s? \D?([0-9]+))/i
+  * DONE_KEYWORDS:
+    * close
+    * fix
+  * IN_PROGRESS_KEYWORDS:
+    * ref
+    * reference
+    * case
+    * issue
+    * card
 
-So an example commit message might be:
+For DONE_KEYWORDS, the card is moved to the list with id `LIST_ID_DONE`, while for IN_PROGRESS_KEYWORDS it is moved to the list with id `LIST_ID_IN_PROGRESS`.
 
-    Added that awesome feature closes #42
+After it has found a keyword, the parser then looks for space, comma or semi-colon separated lists of (hash-prefixed) ids, e.g.:
 
-For the 'case' and 'card' keywords, the card is moved to the list with id `LIST_ID_IN_PROGRESS`, while for keywords 'close' and 'fix', the card is moved to the list with id `LIST_ID_DONE` .
+    closes #1
+    closes #1 #2 #3
+    closes #1, #2, #3
+    closes #1, #2 and #3
+    closes #1, #2, and #3
+    closes #1, #2 & #3
+    closes #1, #2, & #3
+
+So a typical commit message might be:
+
+    Added that awesome feature, refs #42 and closes #1, #2 and #3.
+
 
 ## Contributing
 
