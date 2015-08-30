@@ -124,6 +124,7 @@ module GitTrelloPostCommit
           unless results["idList"] == target_list_id
             puts "Trello: Moving card ##{card_id} to list #{target_list_id}"
             to_update[:idList] = target_list_id
+            to_update[:pos]    = "top"
             @http.update_card(results["id"], to_update)
           end
         end
